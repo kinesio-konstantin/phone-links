@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -12,7 +13,6 @@
         :root {
             --bg: #101114;
             --surface: #191a1f;
-            --surface-hover: #22242a;
             --border: #303239;
             --text: #f5f5f7;
             --muted: #999ba6;
@@ -40,12 +40,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .logo {
-            display: block;
-            margin: 0 0 28px;
-            height: 100px;
-        }
-        
         .page {
             width: 100%;
             max-width: 440px;
@@ -55,20 +49,12 @@
             margin-bottom: 30px;
         }
 
-        .brand-mark {
-            width: 46px;
-            height: 46px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 22px;
-            border: 1px solid rgba(40, 181, 170, .4);
-            border-radius: 14px;
-            background: rgba(40, 181, 170, .09);
-            color: var(--accent);
-            font-size: 25px;
-            font-weight: 750;
-            letter-spacing: -2px;
+        .logo {
+            display: block;
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            margin: 0 0 28px;
         }
 
         .eyebrow {
@@ -152,7 +138,7 @@
             line-height: 1.6;
         }
 
-.actions {
+        .actions {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 9px;
@@ -255,10 +241,14 @@
     <header class="header">
         <img
             class="logo"
-            src="Logo.svg"
-            alt="Konstantin Danilchenko — массажист, кинезиолог" />
+            src="./Logo.svg"
+            alt="Konstantin Danilchenko — массажист, кинезиолог"
+        >
+
         <p class="eyebrow">Konstantin Danilchenko</p>
+
         <h1>Запись и консультации</h1>
+
         <p class="subtitle">
             Выберите удобный способ связи. Буду рад помочь вам.
         </p>
@@ -278,9 +268,12 @@
         </div>
 
         <div class="actions">
-            <button class="action primary"
-                    type="button"
-                    onclick="copyNumber('+40734393146')">
+
+            <button
+                class="action primary"
+                type="button"
+                onclick="copyNumber('+40734393146')"
+            >
                 <svg viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="1.8"
                      stroke-linecap="round" stroke-linejoin="round"
@@ -295,27 +288,40 @@
                 Позвонить
             </a>
 
-            <a class="action"
-               href="https://wa.me/40734393146"
-               target="_blank" rel="noopener noreferrer">
+            <a
+                class="action"
+                href="https://wa.me/40734393146"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 WhatsApp
             </a>
 
-            <button class="action"
-                    type="button"
-                    onclick="copyNumber('tg://+40734393146')">
+            <a
+                class="action"
+                href="https://t.me/kinesio_konstantin"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 Telegram
-            </button>
+            </a>
 
-            <a class="action"
-               href="viber://chat?number=%2B40734393146">
+            <a
+                class="action"
+                href="viber://chat?number=%2B40734393146"
+            >
                 Viber
             </a>
+
         </div>
     </section>
 
-    <div class="status" id="status" role="status"
-         aria-live="polite"></div>
+    <div
+        class="status"
+        id="status"
+        role="status"
+        aria-live="polite"
+    ></div>
 
     <footer class="footer">
         <strong>Konstantin Danilchenko</strong><br>
@@ -330,9 +336,10 @@ async function copyNumber(value) {
 
     try {
         await navigator.clipboard.writeText(value);
-        status.textContent = 'Скопировано в буфер обмена';
+        status.textContent = 'Номер скопирован';
     } catch (error) {
         const field = document.createElement('textarea');
+
         field.value = value;
         field.setAttribute('readonly', '');
         field.style.position = 'fixed';
@@ -345,10 +352,11 @@ async function copyNumber(value) {
         field.remove();
 
         status.textContent = success
-            ? 'Скопировано в буфер обмена'
+            ? 'Номер скопирован'
             : 'Не удалось скопировать. Попробуйте ещё раз.';
     }
 }
 </script>
+
 </body>
 </html>
